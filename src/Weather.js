@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import Loader from 'react-loader-spinner'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faMapMarkerAlt, faLongArrowAltUp, faLongArrowAltDown } from '@fortawesome/free-solid-svg-icons'
 import "./Weather.css";
@@ -112,6 +113,12 @@ export default function Weather(){
             <div className="Weather">
                 {searchForm}
             </div>
+            <Loader
+                type="ThreeDots"
+                color="Black"
+                height={50}
+                width={50}
+            />
       </div>
     );
   }
