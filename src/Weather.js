@@ -20,52 +20,76 @@ export default function Weather(){
     const [wind, setWind] = useState(null);
     const [icon, setIcon] = useState(null);
 
-    let searchForm = (
-        <div className="Weather searchForm">
-            <form onSubmit={handleSubmit}>
+    const searchForm = (
+        <form onSubmit={handleSubmit}>
+            <div className = "input-group mb-3">
                 <input
-                    className="Weather searchBar"
+                    className="searchBar form-control rounded"
                     type="search"
                     placeholder="Search location.."
                     autoFocus={false}
                     onChange={updateLocation}
                 />
-                <button className="Weather searchButton" type="submit">
-                    <FontAwesomeIcon icon={faSearch} />
-                </button>
-                <button className="Weather geoLocationButton">
+                <div className="input-group-append">
+                    <button className="searchButton btn" type="submit">
+                        <FontAwesomeIcon icon={faSearch} />
+                    </button>
+                </div>
+                
+                <button className="geoLocationButton btn">
                     <FontAwesomeIcon icon={faMapMarkerAlt} />
                 </button>
-            </form>
-        </div>
+            </div>
+        </form>
+        
     );
 
-    let currentWeather = (
-        <div>
-            <h2 className="Weather locationName">{apiCity}, {apiCountry}</h2>
-            <div className="Weather description">{description}</div>
-            <img className="Weather icon" src={icon} alt={description} />
-            <div className="Weather currentTemp">
-                {Math.round(temperature)}
-                <span className="Weather units">
-                    <a className="Weather celsiusLink" href="/">°C</a>
-                    {" "}|{" "}
-                    <a className="Weather fahrenheitLink" href="/">°F</a>
+    const currentWeather = (
+        <div className="currentWeather">
+            <div className="locationName">{apiCity}, {apiCountry}</div>
+            <div className="iconTemp clearfix">
+                <img className="icon float-left" src={icon} alt={description} />
+                <span className="currentTemp float-left">
+                    {Math.round(temperature)}
                 </span>
+                <span className="degree float-left">
+                    °
+                </span>
+                <span className="unitLinks">
+                    <a className="celsiusLink " href="/">C</a>
+                    <br/>
+                    <a className="fahrenheitLink" href="/">F</a>
+                </span>
+            </div> 
+            
+            <div className="description">{description}</div>
+            <div className="lastUpdated">Last Updated: 23:35pm</div>
+            <div className="row">
+                <div className="col">
+
+                </div>
             </div>
-            <ul className="Weather details">
-                <li>
-                    <span className="Weather currentTempMax">{Math.round(maxTemperature)}°</span>
+            <ul className="details">
+                <li className="li highsOfLowsOf">
+                    <span className="currentTempMax">{Math.round(maxTemperature)}°</span>
                     <FontAwesomeIcon icon={faLongArrowAltUp} />
-                    <span className="Weather currentTempMin"> | {Math.round(minTemperature)}°</span>
+                    <span className="currentTempMin"> | {Math.round(minTemperature)}°</span>
                     <FontAwesomeIcon icon={faLongArrowAltDown} />
                 </li>
-                <li>Feels like: {Math.round(feelsLike)}°</li>
-                <li>Humidity: {humidity}%</li>
-                <li>Windspeed: {Math.round(wind)}km/h</li>
+                <li className="li feelsLike">Feels like: {Math.round(feelsLike)}°</li>
+            </ul>
+            <ul className="details">
+                <li className="li humidity">Humidity: {humidity}%</li>
+                <li className="li windspeed">Windspeed: {Math.round(wind)}km/h</li>
             </ul>
         </div>
-  );
+    );
+    
+    const hourlyForecast = (
+        <div>
+            Hourly forecast here
+        </div>
+    )
     
     function showWeather(response) {
         setLoaded(true);
@@ -101,25 +125,24 @@ export default function Weather(){
     
     if (loaded) {
         return (
-        <div className="Weather">
-            {searchForm}
-            {currentWeather}
-        </div>
+            <div className="Weather">
+                {searchForm}
+                {currentWeather}
+                {hourlyForecast}
+            </div>
         );
     } else {
         searchLocation("London", "GB");
         return (
-        <div>
             <div className="Weather">
                 {searchForm}
+                <Loader
+                    type="ThreeDots"
+                    color="Black"
+                    height={50}
+                    width={50}
+                />
             </div>
-            <Loader
-                type="ThreeDots"
-                color="Black"
-                height={50}
-                width={50}
-            />
-      </div>
-    );
-  }
+        );
+    }
 }

@@ -1,0 +1,94 @@
+.Weather {
+  background-image: url("dusk.png");
+  background-size: cover;
+  border: 1px solid #c9cacc;
+  border-radius: 5px;
+  margin-top: 30px;
+  padding: 15px;
+  width: 550px;
+  height: 600px;
+}
+
+.Weather .locationName {
+  font-size: 27px;
+  font-weight: 600;
+}
+
+.Weather .iconTemp {
+  margin: 0 auto;
+  width: 206px;
+}
+
+.Weather .currentTemp {
+  font-size: 84px;
+  line-height: 100px;
+}
+
+.Weather .degree {
+  font-size: 40px;
+  position: relative;
+  top: 8px;
+}
+
+.Weather .unitLinks {
+  position: relative;
+  top: 20px;
+  right: 7px;
+}
+
+.Weather .celsiusLink {
+  color: #000000;
+  font-size: 25px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.Weather .fahrenheitLink {
+  color: #000000;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.Weather .unitLinks:hover {
+  text-decoration: none;
+}
+
+.Weather .description {
+  font-size: 22px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.Weather .lastUpdated {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.Weather .details {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.Weather .li {
+  display: inline-block;
+}
+
+.Weather .highsOfLowsOf {
+  margin-right: 10px;
+}
+
+.Weather .feelsLike {
+  margin-left: 10px;
+}
+
+.Weather .humidity {
+  margin-right: 10px;
+}
+
+.Weather .windspeed {
+  margin-left: 10px;
+}
