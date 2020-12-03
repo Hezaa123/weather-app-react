@@ -6,19 +6,9 @@ import { faSearch, faMapMarkerAlt, faLongArrowAltUp, faLongArrowAltDown } from '
 import "./Weather.css";
 
 export default function Weather(){
-    const [loaded, setLoaded] = useState(false);
+    const [weatherData, setWeatherData] = useState({loaded: false})
     const [city, setCity] = useState(null);
-    const [apiCity, setApiCity] = useState(null);
     const [country, setCountry] = useState(null);
-    const [apiCountry, setApiCountry] = useState(null);
-    const [description, setDescription] = useState(null);
-    const [temperature, setTemperature] = useState(null);
-    const [maxTemperature, setMaxTemperature] = useState(null);
-    const [minTemperature, setMinTemperature] = useState(null);
-    const [feelsLike, setFeelsLike] = useState(null);
-    const [humidity, setHumidity] = useState(null);
-    const [wind, setWind] = useState(null);
-    const [icon, setIcon] = useState(null);
 
     const searchForm = (
         <form onSubmit={handleSubmit}>
@@ -41,16 +31,15 @@ export default function Weather(){
                 </button>
             </div>
         </form>
-        
     );
 
     const currentWeather = (
         <div className="currentWeather">
-            <div className="locationName">{apiCity}, {apiCountry}</div>
+            <div className="locationName">{weatherData.cityName}, {weatherData.countryCode}</div>
             <div className="iconTemp clearfix">
-                <img className="icon float-left" src={icon} alt={description} />
+                <img className="icon float-left" src={weatherData.icon} alt={weatherData.description} />
                 <span className="currentTemp float-left">
-                    {Math.round(temperature)}
+                    {Math.round(weatherData.temperature)}
                 </span>
                 <span className="degree float-left">
                     °
@@ -61,54 +50,46 @@ export default function Weather(){
                     <a className="fahrenheitLink" href="/">F</a>
                 </span>
             </div> 
-            
-            <div className="description">{description}</div>
+            <div className="description">{weatherData.description}</div>
             <div className="lastUpdated">Last Updated: 23:35pm</div>
-            <div className="row">
-                <div className="col">
-
-                </div>
-            </div>
+            
             <ul className="details">
                 <li className="li highsOfLowsOf">
-                    <span className="currentTempMax">{Math.round(maxTemperature)}°</span>
+                    <span className="currentTempMax">{Math.round(weatherData.temperatureMax)}°</span>
                     <FontAwesomeIcon icon={faLongArrowAltUp} />
-                    <span className="currentTempMin"> | {Math.round(minTemperature)}°</span>
+                    <span className="currentTempMin"> | {Math.round(weatherData.temperatureMin)}°</span>
                     <FontAwesomeIcon icon={faLongArrowAltDown} />
                 </li>
-                <li className="li feelsLike">Feels like: {Math.round(feelsLike)}°</li>
+                <li className="li humidity">Humidity: {weatherData.humidity}%</li>
             </ul>
             <ul className="details">
-                <li className="li humidity">Humidity: {humidity}%</li>
-                <li className="li windspeed">Windspeed: {Math.round(wind)}km/h</li>
+                <li className="li feelsLike">
+                Feels like: {Math.round(weatherData.feelsLike)}°</li>
+                <li className="li windspeed">Windspeed: {Math.round(weatherData.windspeed)}km/h</li>
             </ul>
         </div>
     );
     
-    const hourlyForecast = (
-        <div>
-            Hourly forecast here
-        </div>
-    )
-    
-    function showWeather(response) {
-        setLoaded(true);
-        setApiCity(response.data.name);
-        setApiCountry(response.data.sys.country);
-        setDescription(response.data.weather[0].description);
-        setTemperature(response.data.main.temp);
-        setMaxTemperature(response.data.main.temp_max);
-        setMinTemperature(response.data.main.temp_min);
-        setFeelsLike(response.data.main.feels_like);
-        setHumidity(response.data.main.humidity);
-        setWind(response.data.wind.speed);
-        setIcon(`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+    function setWeather(response) {
+        setWeatherData({
+            loaded: true,
+            cityName: response.data.name,
+            countryCode: response.data.sys.country,
+            description: response.data.weather[0].description,
+            temperature: response.data.main.temp,
+            temperatureMax: response.data.main.temp_max,
+            temperatureMin: response.data.main.temp_min,
+            feelsLike: response.data.main.feels_like,
+            humidity: response.data.main.humidity,
+            windspeed: response.data.wind.speed,
+            icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+        })
     }
 
     function searchLocation(city, country) {                                                                                           
         const apiKey = "3f5abe4ce673d5dda415df055d820a42";
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${apiKey}`;
-        Axios.get(apiUrl).then(showWeather);
+        Axios.get(apiUrl).then(setWeather);
     }
     function handleSubmit(event) {
         event.preventDefault();
@@ -123,12 +104,11 @@ export default function Weather(){
         setCountry(locationArray[1]);
     }
     
-    if (loaded) {
+    if (weatherData.loaded) {
         return (
             <div className="Weather">
                 {searchForm}
                 {currentWeather}
-                {hourlyForecast}
             </div>
         );
     } else {
