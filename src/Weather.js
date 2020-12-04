@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import Loader from 'react-loader-spinner'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faMapMarkerAlt, faLongArrowAltUp, faLongArrowAltDown } from '@fortawesome/free-solid-svg-icons'
+import Loader from "react-loader-spinner";
+import FormattedDate from "./FormattedDate";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch, faMapMarkerAlt, faLongArrowAltUp, faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons";
 import "./Weather.css";
 
 export default function Weather(){
@@ -12,24 +13,21 @@ export default function Weather(){
 
     const searchForm = (
         <form onSubmit={handleSubmit}>
-            <div className = "input-group mb-3">
+            <div className = "locationSearch input-group">
                 <input
-                    className="searchBar form-control rounded"
+                    className="searchBar form-control rounded pr-3"
                     type="search"
                     placeholder="Search location.."
                     autoFocus={false}
                     onChange={updateLocation}
                 />
-                <div className="input-group-append">
-                    <button className="searchButton btn" type="submit">
-                        <FontAwesomeIcon icon={faSearch} />
-                    </button>
-                </div>
-                
-                <button className="geoLocationButton btn">
-                    <FontAwesomeIcon icon={faMapMarkerAlt} />
+                <button className="searchButton btn" type="submit">
+                    <FontAwesomeIcon icon={faSearch} />
                 </button>
             </div>
+                <button className="geoLocationButton btn mt-2">
+                    <FontAwesomeIcon icon={faMapMarkerAlt} />
+                </button>
         </form>
     );
 
@@ -45,13 +43,13 @@ export default function Weather(){
                     °
                 </span>
                 <span className="unitLinks">
-                    <a className="celsiusLink " href="/">C</a>
+                    <a className="celsiusLink" href="/">C</a>
                     <br/>
                     <a className="fahrenheitLink" href="/">F</a>
                 </span>
             </div> 
             <div className="description">{weatherData.description}</div>
-            <div className="lastUpdated">Last Updated: 23:35pm</div>
+            <div className="lastUpdated">Last Updated: <FormattedDate date={weatherData.lastUpdated}/></div>
             
             <ul className="details">
                 <li className="li highsOfLowsOf">
@@ -76,6 +74,7 @@ export default function Weather(){
             cityName: response.data.name,
             countryCode: response.data.sys.country,
             description: response.data.weather[0].description,
+            lastUpdated: new Date(response.data.dt * 1000),
             temperature: response.data.main.temp,
             temperatureMax: response.data.main.temp_max,
             temperatureMin: response.data.main.temp_min,

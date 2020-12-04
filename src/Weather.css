@@ -10,6 +10,29 @@
   height: 600px;
 }
 
+.Weather .locationSearch {
+  margin: 0 auto;
+  width: 400px;
+  position: relative;
+  left: 21px;
+}
+
+.Weather .searchButton {
+  position: relative;
+  right: 40px;
+}
+
+.Weather .geoLocationButton {
+  border: 1px solid #000000;
+  border-radius: 50%;
+  color: #000000;
+}
+
+.Weather .geoLocationButton:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #000000;
+}
+
 .Weather .locationName {
   font-size: 27px;
   font-weight: 600;
