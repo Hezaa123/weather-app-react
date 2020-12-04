@@ -8,8 +8,6 @@ export default function FormattedDate(props){
 
     let minutes = props.date.getMinutes() < 10 ? `0${props.date.getMinutes()}` : props.date.getMinutes();
    
-
-
     return (
         <span>
             {day} at {hours}:{minutes}

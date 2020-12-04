@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import Loader from "react-loader-spinner";
-import FormattedDate from "./FormattedDate";
+import WeatherInfo from "./WeatherInfo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faMapMarkerAlt, faLongArrowAltUp, faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import "./Weather.css";
 
-export default function Weather(){
+export default function Weather(props){
     const [weatherData, setWeatherData] = useState({loaded: false})
-    const [city, setCity] = useState(null);
-    const [country, setCountry] = useState(null);
+    const [city, setCity] = useState(props.defaultCity);
+    const [countryCode, setCountryCode] = useState(props.defaultCountryCode);
 
     const searchForm = (
         <form onSubmit={handleSubmit}>
@@ -30,43 +30,6 @@ export default function Weather(){
                 </button>
         </form>
     );
-
-    const currentWeather = (
-        <div className="currentWeather">
-            <div className="locationName">{weatherData.cityName}, {weatherData.countryCode}</div>
-            <div className="iconTemp clearfix">
-                <img className="icon float-left" src={weatherData.icon} alt={weatherData.description} />
-                <span className="currentTemp float-left">
-                    {Math.round(weatherData.temperature)}
-                </span>
-                <span className="degree float-left">
-                    °
-                </span>
-                <span className="unitLinks">
-                    <a className="celsiusLink" href="/">C</a>
-                    <br/>
-                    <a className="fahrenheitLink" href="/">F</a>
-                </span>
-            </div> 
-            <div className="description">{weatherData.description}</div>
-            <div className="lastUpdated">Last Updated: <FormattedDate date={weatherData.lastUpdated}/></div>
-            
-            <ul className="details">
-                <li className="li highsOfLowsOf">
-                    <span className="currentTempMax">{Math.round(weatherData.temperatureMax)}°</span>
-                    <FontAwesomeIcon icon={faLongArrowAltUp} />
-                    <span className="currentTempMin"> | {Math.round(weatherData.temperatureMin)}°</span>
-                    <FontAwesomeIcon icon={faLongArrowAltDown} />
-                </li>
-                <li className="li humidity">Humidity: {weatherData.humidity}%</li>
-            </ul>
-            <ul className="details">
-                <li className="li feelsLike">
-                Feels like: {Math.round(weatherData.feelsLike)}°</li>
-                <li className="li windspeed">Windspeed: {Math.round(weatherData.windspeed)}km/h</li>
-            </ul>
-        </div>
-    );
     
     function setWeather(response) {
         setWeatherData({
@@ -85,14 +48,14 @@ export default function Weather(){
         })
     }
 
-    function searchLocation(city, country) {                                                                                           
+    function searchLocation() {                                                                                           
         const apiKey = "3f5abe4ce673d5dda415df055d820a42";
-        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${apiKey}`;
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&appid=${apiKey}`;
         Axios.get(apiUrl).then(setWeather);
     }
     function handleSubmit(event) {
         event.preventDefault();
-        searchLocation(city, country);
+        searchLocation();
     }
 
     function updateLocation(event){
@@ -100,18 +63,18 @@ export default function Weather(){
         const locationArray = location.split(",");
 
         setCity(locationArray[0]);
-        setCountry(locationArray[1]);
+        setCountryCode(locationArray[1]);
     }
     
     if (weatherData.loaded) {
         return (
             <div className="Weather">
                 {searchForm}
-                {currentWeather}
+                <WeatherInfo data={weatherData}/>
             </div>
         );
     } else {
-        searchLocation("London", "GB");
+        searchLocation();
         return (
             <div className="Weather">
                 {searchForm}
