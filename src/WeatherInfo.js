@@ -1,28 +1,20 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
+import WeatherTemperature from "./WeatherTemperature";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLongArrowAltUp, faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons";
+import "./WeatherInfo.css";
 
 export default function WeatherInfo(props){
     return(
         <div className="WeatherInfo">
             <div className="locationName">{props.data.cityName}, {props.data.countryCode}</div>
             <div className="iconTemp clearfix">
-                <div className = "icon float-left">
+                <div className = "icon">
                     <WeatherIcon code={props.data.icon}/>
                 </div>
-                <span className="temp float-left">
-                    {Math.round(props.data.temperature)}
-                </span>
-                <span className="degree float-left">
-                    °
-                </span>
-                <span className="unitLinks">
-                    <a className="celsiusLink" href="/">C</a>
-                    <br/>
-                    <a className="fahrenheitLink" href="/">F</a>
-                </span>
+                <WeatherTemperature celsius={props.data.temperature}/>
             </div> 
             <div className="description">{props.data.description}</div>
             <div className="lastUpdated">Last Updated: <FormattedDate date={props.data.lastUpdated}/></div>

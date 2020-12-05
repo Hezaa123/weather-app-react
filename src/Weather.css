@@ -18,6 +18,27 @@
   left: 21px;
 }
 
+.Weather .searchBar {
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  transition: all 200ms ease-in-out;
+}
+
+.Weather .searchBar:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.Weather .searchBar:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.Weather .searchBar::placeholder {
+  color: rgba(0, 0, 0, 0.8);
+  border: none;
+}
+
 .Weather .searchButton {
   color: #000000;
   position: relative;
@@ -25,104 +46,15 @@
 }
 
 .Weather .geoLocationButton {
-  border: 1px solid #000000;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
   border-radius: 50%;
   color: #000000;
+  transition: all 200ms ease-in-out;
 }
 
 .Weather .geoLocationButton:hover {
   background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
   color: #000000;
-}
-
-.Weather .locationName {
-  font-size: 27px;
-  font-weight: 600;
-}
-
-.Weather .iconTemp {
-  margin: 0 auto;
-  width: 170px;
-}
-
-.Weather .icon canvas {
-  height: 64px;
-  width: 64px;
-  margin-top: 22px;
-  margin-right: 13px;
-}
-
-.Weather .temp {
-  font-size: 84px;
-  line-height: 100px;
-}
-
-.Weather .degree {
-  font-size: 40px;
-  position: relative;
-  top: 8px;
-}
-
-.Weather .unitLinks {
-  position: relative;
-  top: 20px;
-  right: -9px;
-}
-
-.Weather .celsiusLink {
-  color: #000000;
-  font-size: 25px;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.Weather .fahrenheitLink {
-  color: #000000;
-  font-size: 20px;
-  font-weight: 700;
-  opacity: 0.7;
-  text-decoration: none;
-}
-
-.Weather .unitLinks:hover {
-  text-decoration: none;
-}
-
-.Weather .description {
-  font-size: 22px;
-  font-weight: 600;
-  text-transform: capitalize;
-}
-
-.Weather .lastUpdated {
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-
-.Weather .details {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 0;
-  padding: 0;
-}
-
-.Weather .li {
-  display: inline-block;
-}
-
-.Weather .highsOfLowsOf {
-  margin-right: 10px;
-}
-
-.Weather .feelsLike {
-  margin-left: 10px;
-}
-
-.Weather .humidity {
-  margin-right: 10px;
-}
-
-.Weather .windspeed {
-  margin-left: 10px;
 }

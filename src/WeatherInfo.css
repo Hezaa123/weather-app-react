@@ -1,0 +1,103 @@
+.WeatherInfo {
+  border-bottom: 1px solid #000000;
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 5px;
+  text-align: center;
+  width: 358px;
+}
+
+.WeatherInfo .locationName {
+  font-size: 27px;
+  font-weight: 600;
+}
+
+.Weather .iconTemp {
+  height: 100px;
+}
+
+.WeatherInfo .icon {
+  display: inline-block;
+  height: 64px;
+  width: 64px;
+  margin-top: 22px;
+  margin-right: 13px;
+}
+
+.WeatherInfo .temp {
+  font-size: 84px;
+  line-height: 100px;
+}
+
+.WeatherInfo .degree {
+  font-size: 40px;
+  padding-right: 10px;
+  position: relative;
+  top: -32px;
+}
+
+.Weather .units {
+  display: inline-block;
+  height: 100px;
+  position: relative;
+  top: -10px;
+  width: 30px;
+}
+
+.WeatherInfo .activeUnit {
+  color: #000000;
+  font-size: 25px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.WeatherInfo .unitLink {
+  color: #000000;
+  font-size: 20px;
+  font-weight: 700;
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+.WeatherInfo .unitLink:hover {
+  text-decoration: none;
+}
+
+.WeatherInfo .description {
+  font-size: 22px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.WeatherInfo .lastUpdated {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.WeatherInfo .details {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.WeatherInfo .li {
+  display: inline-block;
+}
+
+.WeatherInfo .highsOfLowsOf {
+  margin-right: 10px;
+}
+
+.WeatherInfo .feelsLike {
+  margin-left: 10px;
+}
+
+.WeatherInfo .humidity {
+  margin-right: 10px;
+}
+
+.WeatherInfo .windspeed {
+  margin-left: 10px;
+}
