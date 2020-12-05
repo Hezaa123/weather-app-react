@@ -58,7 +58,7 @@ export default function Weather(props){
         event.preventDefault();
         searchLocation();
     }
-
+    
     function setCoordinates(position){
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
@@ -71,6 +71,7 @@ export default function Weather(props){
     function handleGeolocation(){
         navigator.geolocation.getCurrentPosition(setCoordinates);
     }
+
     function updateLocation(event){
         const location = event.target.value;
         const locationArray = location.split(",");
@@ -87,7 +88,7 @@ export default function Weather(props){
             </div>
         );
     } else {
-        
+        searchLocation();
         return (
             <div className="Weather">
                 {searchForm}
