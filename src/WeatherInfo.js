@@ -9,7 +9,7 @@ export default function WeatherInfo(props){
         <div className="WeatherInfo">
             <div className="locationName">{props.data.cityName}, {props.data.countryCode}</div>
             <div className="iconTemp clearfix">
-                <div class = "icon float-left">
+                <div className = "icon float-left">
                     <WeatherIcon code={props.data.icon}/>
                 </div>
                 <span className="temp float-left">

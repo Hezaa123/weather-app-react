@@ -25,7 +25,7 @@ export default function Weather(props){
                     <FontAwesomeIcon icon={faSearch} />
                 </button>
             </div>
-                <button className="geoLocationButton btn mt-2">
+                <button className="geoLocationButton btn mt-2" onClick={handleGeolocation}>
                     <FontAwesomeIcon icon={faMapMarkerAlt} />
                 </button>
         </form>
@@ -53,11 +53,24 @@ export default function Weather(props){
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&appid=${apiKey}`;
         Axios.get(apiUrl).then(setWeather);
     }
+
     function handleSubmit(event) {
         event.preventDefault();
         searchLocation();
     }
 
+    function setCoordinates(position){
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        const apiKey = "3f5abe4ce673d5dda415df055d820a42";
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+        Axios.get(apiUrl).then(setWeather);
+    }
+
+    function handleGeolocation(){
+        navigator.geolocation.getCurrentPosition(setCoordinates);
+    }
     function updateLocation(event){
         const location = event.target.value;
         const locationArray = location.split(",");
@@ -74,7 +87,7 @@ export default function Weather(props){
             </div>
         );
     } else {
-        searchLocation();
+        
         return (
             <div className="Weather">
                 {searchForm}
