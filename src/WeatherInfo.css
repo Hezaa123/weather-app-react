@@ -52,14 +52,19 @@
 }
 
 .WeatherInfo .unitLink {
+  border-radius: 4px;
   color: #000000;
   font-size: 20px;
   font-weight: 700;
   opacity: 0.7;
-  text-decoration: none;
+  padding: 0px 8px 0px 8px;
+  transition: all 200ms ease-in-out;
 }
 
 .WeatherInfo .unitLink:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  opacity: 1;
   text-decoration: none;
 }
 

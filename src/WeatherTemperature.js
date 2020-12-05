@@ -40,7 +40,7 @@ export default function WeatherTemperature(props){
                     °
                 </span>
                 <span className="units">
-                    <a className="activeUnit" href="/">F</a>
+                    <span className="activeUnit" href="/">F</span>
                     <br/>
                     <a className="unitLink" href="/" onClick={showCelsius}>C</a>
                 </span>

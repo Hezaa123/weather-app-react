@@ -2,7 +2,7 @@
   background-image: url("dusk.png");
   background-size: cover;
   border: 1px solid #c9cacc;
-  border-radius: 5px;
+  border-radius: 4px;
   color: #000000;
   display: block;
   margin: 30px 0 auto;
@@ -26,12 +26,12 @@
 
 .Weather .searchBar:hover {
   background-color: rgba(0, 0, 0, 0.1);
-  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .Weather .searchBar:focus {
   background-color: rgba(0, 0, 0, 0.1);
-  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .Weather .searchBar::placeholder {
@@ -55,6 +55,6 @@
 
 .Weather .geoLocationButton:hover {
   background-color: rgba(0, 0, 0, 0.1);
-  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
   color: #000000;
 }
