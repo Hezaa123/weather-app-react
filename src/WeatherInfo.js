@@ -1,5 +1,6 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
+import WeatherIcon from "./WeatherIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLongArrowAltUp, faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons";
 
@@ -8,8 +9,10 @@ export default function WeatherInfo(props){
         <div className="WeatherInfo">
             <div className="locationName">{props.data.cityName}, {props.data.countryCode}</div>
             <div className="iconTemp clearfix">
-                <img className="icon float-left" src={props.data.icon} alt={props.data.description} />
-                <span className="currentTemp float-left">
+                <div class = "icon float-left">
+                    <WeatherIcon code={props.data.icon}/>
+                </div>
+                <span className="temp float-left">
                     {Math.round(props.data.temperature)}
                 </span>
                 <span className="degree float-left">
@@ -26,9 +29,9 @@ export default function WeatherInfo(props){
             
             <ul className="details">
                 <li className="li highsOfLowsOf">
-                    <span className="currentTempMax">{Math.round(props.data.temperatureMax)}°</span>
+                    <span className="tempMax">{Math.round(props.data.temperatureMax)}°</span>
                     <FontAwesomeIcon icon={faLongArrowAltUp} />
-                    <span className="currentTempMin"> | {Math.round(props.data.temperatureMin)}°</span>
+                    <span className="tempMin"> | {Math.round(props.data.temperatureMin)}°</span>
                     <FontAwesomeIcon icon={faLongArrowAltDown} />
                 </li>
                 <li className="li humidity">Humidity: {props.data.humidity}%</li>

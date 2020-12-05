@@ -3,6 +3,7 @@
   background-size: cover;
   border: 1px solid #c9cacc;
   border-radius: 5px;
+  color: #000000;
   display: block;
   margin: 30px 0 auto;
   padding: 15px;
@@ -40,10 +41,17 @@
 
 .Weather .iconTemp {
   margin: 0 auto;
-  width: 206px;
+  width: 170px;
 }
 
-.Weather .currentTemp {
+.Weather .icon canvas {
+  height: 64px;
+  width: 64px;
+  margin-top: 22px;
+  margin-right: 13px;
+}
+
+.Weather .temp {
   font-size: 84px;
   line-height: 100px;
 }
@@ -57,7 +65,7 @@
 .Weather .unitLinks {
   position: relative;
   top: 20px;
-  right: 7px;
+  right: -9px;
 }
 
 .Weather .celsiusLink {

@@ -44,7 +44,7 @@ export default function Weather(props){
             feelsLike: response.data.main.feels_like,
             humidity: response.data.main.humidity,
             windspeed: response.data.wind.speed,
-            icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+            icon: response.data.weather[0].icon
         })
     }
 
