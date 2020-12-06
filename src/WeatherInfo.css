@@ -1,8 +1,7 @@
 .WeatherInfo {
-  border-bottom: 1px solid #000000;
   display: block;
   margin: 0 auto;
-  padding-bottom: 5px;
+  padding-bottom: 15px;
   text-align: center;
   width: 358px;
 }
@@ -26,7 +25,8 @@
 
 .WeatherInfo .temp {
   font-size: 84px;
-  line-height: 100px;
+  line-height: 90px;
+  padding-left: 5px;
 }
 
 .WeatherInfo .degree {
@@ -71,6 +71,7 @@
 .WeatherInfo .description {
   font-size: 22px;
   font-weight: 600;
+  margin-top: 10px;
   text-transform: capitalize;
 }
 

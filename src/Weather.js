@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 import Loader from "react-loader-spinner";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import "./Weather.css";
@@ -36,15 +37,15 @@ export default function Weather(props){
             loaded: true,
             cityName: response.data.name,
             countryCode: response.data.sys.country,
+            icon: response.data.weather[0].icon,
             description: response.data.weather[0].description,
             lastUpdated: new Date(response.data.dt * 1000),
             temperature: response.data.main.temp,
-            temperatureMax: response.data.main.temp_max,
-            temperatureMin: response.data.main.temp_min,
             feelsLike: response.data.main.feels_like,
             humidity: response.data.main.humidity,
             windspeed: response.data.wind.speed,
-            icon: response.data.weather[0].icon
+            sunrise: response.data.sys.sunrise,
+            sunset: response.data.sys.sunset
         })
     }
 
@@ -85,6 +86,7 @@ export default function Weather(props){
             <div className="Weather">
                 {searchForm}
                 <WeatherInfo data={weatherData}/>
+                <WeatherForecast city={weatherData.cityName} country={weatherData.countryCode}/>
             </div>
         );
     } else {

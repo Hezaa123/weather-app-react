@@ -2,8 +2,6 @@ import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLongArrowAltUp, faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons";
 import "./WeatherInfo.css";
 
 export default function WeatherInfo(props){
@@ -19,20 +17,24 @@ export default function WeatherInfo(props){
             <div className="description">{props.data.description}</div>
             <div className="lastUpdated">Last Updated: <FormattedDate date={props.data.lastUpdated}/></div>
             
+            <div className="details">
+                <span className="li feelsLike">
+                    Feels like: {Math.round(props.data.feelsLike)}°
+                </span>
+            </div>
             <ul className="details">
-                <li className="li highsOfLowsOf">
-                    <span className="tempMax">{Math.round(props.data.temperatureMax)}°</span>
-                    <FontAwesomeIcon icon={faLongArrowAltUp} />
-                    <span className="tempMin"> | {Math.round(props.data.temperatureMin)}°</span>
-                    <FontAwesomeIcon icon={faLongArrowAltDown} />
+                <li className="li humidity">
+                    Humidity: {props.data.humidity}%
                 </li>
-                <li className="li humidity">Humidity: {props.data.humidity}%</li>
+                <li className="li windspeed">
+                    Windspeed: {Math.round(props.data.windspeed)}km/h
+                </li>
             </ul>
             <ul className="details">
-                <li className="li feelsLike">
-                Feels like: {Math.round(props.data.feelsLike)}°</li>
-                <li className="li windspeed">Windspeed: {Math.round(props.data.windspeed)}km/h</li>
+                <li className="li sunrise">
+                Sunrise: </li>
+                <li className="li sunset">Sunset: </li>
             </ul>
         </div>
-    )
+    );
 }
