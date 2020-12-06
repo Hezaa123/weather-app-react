@@ -82,25 +82,30 @@ export default function Weather(props){
     }
 
 
-    const date = new Date();
-    const hours = date.getHours();
+    function getBackground(){
+        const date = new Date();
+        const hours = date.getHours();
 
-    let time = "sunrise";
+        let time = "sunrise";
 
-    if(hours >= 7 && hours < 12){
-        time = "morning";
-    } else if(hours >= 12 && hours < 17){
-        time = "day";
-    }else if (hours >= 17 && hours < 20) {
-        time = "dusk";
-    }else if (hours >= 20 && hours < 5){
-        time ="night";
+        if(hours >= 8 && hours < 12){
+            time = "morning";
+        } else if(hours >= 12 && hours < 17){
+            time = "day";
+        }else if (hours >= 17 && hours < 20) {
+            time = "dusk";
+        }else if (hours >= 20 || hours < 5){
+            time ="night";
+        }
+
+        console.log(hours);
+        return time;
     }
+    
 
     if (weatherData.loaded) {
-
         return (
-            <div className={"Weather " + time}>
+            <div className={"Weather " + getBackground()}>
                 {searchForm}
                 <WeatherInfo data={weatherData}/>
                 <WeatherForecast city={weatherData.cityName} country={weatherData.countryCode}/>
@@ -109,7 +114,7 @@ export default function Weather(props){
     } else {
         searchLocation();
         return (
-            <div className={"Weather " + time}>
+            <div className={"Weather " + getBackground()}>
                 {searchForm}
                 <Loader
                     type="ThreeDots"

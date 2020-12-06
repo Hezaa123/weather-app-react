@@ -28,7 +28,7 @@ export default function WeatherIcon(props){
 
     let color = "#000000";
 
-    if(hours >= 20 && hours < 5){
+    if(hours >= 20 || hours < 5){
         color = "#ffffff";
     }
 

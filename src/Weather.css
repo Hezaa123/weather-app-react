@@ -9,6 +9,12 @@
   height: 550px;
 }
 
+.Weather.sunrise {
+  background-image: url("sunrise.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .Weather.morning {
   background-image: url("morning.png");
 }
@@ -56,11 +62,13 @@
 }
 
 .Weather .searchBar:focus {
+  color: #000000;
   background-color: rgba(0, 0, 0, 0.1);
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .Weather.night .searchBar:focus {
+  color: #ffffff;
   background-color: rgba(255, 255, 255, 0.1);
   box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.3);
 }
