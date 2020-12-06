@@ -2,6 +2,7 @@ import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature";
+import WeatherSunriseSunset from "./WeatherSunriseSunset";
 import "./WeatherInfo.css";
 
 export default function WeatherInfo(props){
@@ -18,23 +19,19 @@ export default function WeatherInfo(props){
             <div className="lastUpdated">Last Updated: <FormattedDate date={props.data.lastUpdated}/></div>
             
             <div className="details">
-                <span className="li feelsLike">
+                <span className="feelsLike">
                     Feels like: {Math.round(props.data.feelsLike)}°
                 </span>
             </div>
             <ul className="details">
-                <li className="li humidity">
+                <li className="humidity">
                     Humidity: {props.data.humidity}%
                 </li>
-                <li className="li windspeed">
+                <li className="windspeed">
                     Windspeed: {Math.round(props.data.windspeed)}km/h
                 </li>
             </ul>
-            <ul className="details">
-                <li className="li sunrise">
-                Sunrise: </li>
-                <li className="li sunset">Sunset: </li>
-            </ul>
+            <WeatherSunriseSunset sunriseDate={props.data.sunrise} sunsetDate={props.data.sunset}/>
         </div>
     );
 }

@@ -88,22 +88,14 @@
   padding: 0;
 }
 
-.WeatherInfo .li {
-  display: inline-block;
-}
-
-.WeatherInfo .highsOfLowsOf {
-  margin-right: 10px;
-}
-
-.WeatherInfo .feelsLike {
-  margin-left: 10px;
-}
-
 .WeatherInfo .humidity {
   margin-right: 10px;
 }
 
 .WeatherInfo .windspeed {
   margin-left: 10px;
+}
+
+.WeatherInfo li {
+  display: inline-block;
 }

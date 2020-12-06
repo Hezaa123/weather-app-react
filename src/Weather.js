@@ -44,8 +44,8 @@ export default function Weather(props){
             feelsLike: response.data.main.feels_like,
             humidity: response.data.main.humidity,
             windspeed: response.data.wind.speed,
-            sunrise: response.data.sys.sunrise,
-            sunset: response.data.sys.sunset
+            sunrise: new Date(response.data.sys.sunrise * 1000),
+            sunset: new Date(response.data.sys.sunset * 1000)
         })
     }
 
@@ -82,6 +82,7 @@ export default function Weather(props){
     }
     
     if (weatherData.loaded) {
+        console.log(weatherData.sunrise);
         return (
             <div className="Weather">
                 {searchForm}
