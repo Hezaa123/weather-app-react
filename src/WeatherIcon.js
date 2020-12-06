@@ -23,10 +23,19 @@ export default function WeatherIcon(props){
         "50n" : "FOG",
     }
 
+    const date = new Date();
+    const hours = date.getHours();
+
+    let color = "#000000";
+
+    if(hours >= 20 && hours < 5){
+        color = "#ffffff";
+    }
+
     return(
         <ReactAnimatedWeather
             icon={codeMapping[props.code]}
-            color= "#000000"
+            color= {color}
             size={70}
             animate={true}
         />  

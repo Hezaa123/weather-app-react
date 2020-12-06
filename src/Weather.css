@@ -1,6 +1,4 @@
 .Weather {
-  background-image: url("dusk.png");
-  background-size: cover;
   border: 1px solid #c9cacc;
   border-radius: 4px;
   color: #000000;
@@ -9,6 +7,23 @@
   padding: 15px;
   width: 550px;
   height: 550px;
+}
+
+.Weather.morning {
+  background-image: url("morning.png");
+}
+
+.Weather.day {
+  background-image: url("day.png");
+}
+
+.Weather.dusk {
+  background-image: url("dusk.png");
+}
+
+.Weather.night {
+  background-image: url("night.png");
+  color: #ffffff;
 }
 
 .Weather .locationSearch {
@@ -24,9 +39,20 @@
   transition: all 200ms ease-in-out;
 }
 
+.Weather.night .searchBar {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  transition: all 200ms ease-in-out;
+}
+
 .Weather .searchBar:hover {
   background-color: rgba(0, 0, 0, 0.1);
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.Weather.night .searchBar:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.3);
 }
 
 .Weather .searchBar:focus {
@@ -34,13 +60,41 @@
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
+.Weather.night .searchBar:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.3);
+}
+
 .Weather .searchBar::placeholder {
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.5);
+  border: none;
+}
+
+.Weather.night .searchBar::placeholder {
+  color: rgba(255, 255, 255, 0.5);
   border: none;
 }
 
 .Weather .searchButton {
   color: #000000;
+  position: relative;
+  right: 40px;
+}
+
+.Weather.night .searchButton {
+  color: #ffffff;
+  position: relative;
+  right: 40px;
+}
+
+.Weather .searchButton:hover {
+  color: #000000;
+  position: relative;
+  right: 40px;
+}
+
+.Weather.night .searchButton:hover {
+  color: #ffffff;
   position: relative;
   right: 40px;
 }
@@ -55,8 +109,143 @@
   transition: all 200ms ease-in-out;
 }
 
+.Weather.night .geoLocationButton {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  color: #ffffff;
+  display: block;
+  margin: 0 auto;
+  transition: all 200ms ease-in-out;
+}
+
 .Weather .geoLocationButton:hover {
   background-color: rgba(0, 0, 0, 0.1);
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
   color: #000000;
+}
+
+.Weather.night .geoLocationButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.Weather .locationName {
+  font-size: 27px;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.Weather .iconTemp {
+  height: 100px;
+}
+
+.Weather .icon {
+  display: inline-block;
+  height: 64px;
+  width: 64px;
+  margin-top: 22px;
+  margin-right: 13px;
+}
+
+.Weather .temp {
+  font-size: 84px;
+  line-height: 90px;
+  padding-left: 5px;
+}
+
+.Weather .degree {
+  font-size: 40px;
+  padding-right: 10px;
+  position: relative;
+  top: -32px;
+}
+
+.Weather .units {
+  display: inline-block;
+  height: 100px;
+  position: relative;
+  top: -10px;
+  width: 30px;
+}
+
+.Weather .activeUnit {
+  color: #000000;
+  font-size: 25px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.Weather.night .activeUnit {
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.Weather .unitLink {
+  border-radius: 4px;
+  color: #000000;
+  font-size: 20px;
+  font-weight: 700;
+  opacity: 0.7;
+  padding: 0px 8px 0px 8px;
+  transition: all 200ms ease-in-out;
+}
+
+.Weather.night .unitLink {
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  opacity: 0.5;
+  padding: 0px 8px 0px 8px;
+  transition: all 200ms ease-in-out;
+}
+
+.Weather .unitLink:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  text-decoration: none;
+}
+
+.Weather.night .unitLink:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.3);
+  opacity: 1;
+  text-decoration: none;
+}
+
+.Weather .description {
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 10px;
+  text-transform: capitalize;
+}
+
+.Weather .lastUpdated {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.Weather .details {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.Weather .humidity {
+  margin-right: 10px;
+}
+
+.Weather .windspeed {
+  margin-left: 10px;
+}
+
+.Weather li {
+  display: inline-block;
 }

@@ -31,7 +31,7 @@ export default function Weather(props){
                 </button>
         </form>
     );
-    
+
     function setWeather(response) {
         setWeatherData({
             loaded: true,
@@ -80,11 +80,27 @@ export default function Weather(props){
         setCity(locationArray[0]);
         setCountryCode(locationArray[1]);
     }
-    
+
+
+    const date = new Date();
+    const hours = date.getHours();
+
+    let time = "sunrise";
+
+    if(hours >= 7 && hours < 12){
+        time = "morning";
+    } else if(hours >= 12 && hours < 17){
+        time = "day";
+    }else if (hours >= 17 && hours < 20) {
+        time = "dusk";
+    }else if (hours >= 20 && hours < 5){
+        time ="night";
+    }
+
     if (weatherData.loaded) {
-        console.log(weatherData.sunrise);
+
         return (
-            <div className="Weather">
+            <div className={"Weather " + time}>
                 {searchForm}
                 <WeatherInfo data={weatherData}/>
                 <WeatherForecast city={weatherData.cityName} country={weatherData.countryCode}/>
@@ -93,7 +109,7 @@ export default function Weather(props){
     } else {
         searchLocation();
         return (
-            <div className="Weather">
+            <div className={"Weather " + time}>
                 {searchForm}
                 <Loader
                     type="ThreeDots"
