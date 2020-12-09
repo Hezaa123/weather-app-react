@@ -1,11 +1,19 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
-import WeatherTemperature from "./WeatherTemperature";
+import WeatherUnit from "./WeatherUnit";
 import WeatherSunriseSunset from "./WeatherSunriseSunset";
+import { useUnit } from "./UnitContext";
 import "./WeatherInfo.css";
 
 export default function WeatherInfo(props){
+    const celsiusUnit = useUnit();
+
+    const setUnit = {
+        temperature: celsiusUnit ? props.data.temperature : ((props.data.temperature * 9) / 5 + 32),
+        feelsLike: celsiusUnit ? props.data.feelsLike : ((props.data.feelsLike * 9) / 5 + 32)
+    }
+    
     return(
         <div className="WeatherInfo">
             <div className="locationName">{props.data.cityName}, {props.data.countryCode}</div>
@@ -13,14 +21,20 @@ export default function WeatherInfo(props){
                 <div className = "icon">
                     <WeatherIcon code={props.data.icon}/>
                 </div>
-                <WeatherTemperature celsius={props.data.temperature}/>
+                <span className="temp">
+                    {Math.round(setUnit.temperature)}
+                </span>
+                <span className="degree">
+                    °
+                </span>
+                <WeatherUnit/>
             </div> 
             <div className="description">{props.data.description}</div>
             <div className="lastUpdated">Last Updated: <FormattedDate date={props.data.lastUpdated}/></div>
             
             <div className="details">
                 <span className="feelsLike">
-                    Feels like: {Math.round(props.data.feelsLike)}°
+                    Feels like: {Math.round(setUnit.feelsLike)}°
                 </span>
             </div>
             <ul className="details">

@@ -7,14 +7,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import "./Weather.css";
 
-export default function Weather(props){
+export default function Weather(props) {
     const [weatherData, setWeatherData] = useState({loaded: false})
     const [city, setCity] = useState(props.defaultCity);
     const [countryCode, setCountryCode] = useState(props.defaultCountryCode);
+    //const [celsius, setCelsius] = useState(true);
 
     const searchForm = (
         <form onSubmit={handleSubmit}>
-            <div className = "locationSearch input-group">
+            <div className="locationSearch input-group">
                 <input
                     className="searchBar form-control rounded pr-3"
                     type="search"
@@ -60,7 +61,7 @@ export default function Weather(props){
         searchLocation();
     }
     
-    function setCoordinates(position){
+    function setCoordinates(position) {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
@@ -69,11 +70,11 @@ export default function Weather(props){
         Axios.get(apiUrl).then(setWeather);
     }
 
-    function handleGeolocation(){
+    function handleGeolocation() {
         navigator.geolocation.getCurrentPosition(setCoordinates);
     }
 
-    function updateLocation(event){
+    function updateLocation(event) {
         const location = event.target.value;
         const locationArray = location.split(",");
 
@@ -82,39 +83,38 @@ export default function Weather(props){
     }
 
 
-    function getBackground(){
+    function getTime() {
         const date = new Date();
         const hours = date.getHours();
 
         let time = "sunrise";
 
-        if(hours >= 8 && hours < 12){
+        if(hours >= 8 && hours < 10) {
             time = "morning";
-        } else if(hours >= 12 && hours < 17){
+        } else if(hours >= 10 && hours < 17) {
             time = "day";
-        }else if (hours >= 17 && hours < 20) {
+        } else if(hours >= 17 && hours < 20) {
             time = "dusk";
-        }else if (hours >= 20 || hours < 5){
+        } else if(hours >= 20 || hours < 5) {
             time ="night";
         }
 
-        console.log(hours);
         return time;
     }
     
 
-    if (weatherData.loaded) {
+    if(weatherData.loaded) {
         return (
-            <div className={"Weather " + getBackground()}>
+            <div className={"Weather " + getTime()}>
                 {searchForm}
                 <WeatherInfo data={weatherData}/>
-                <WeatherForecast city={weatherData.cityName} country={weatherData.countryCode}/>
+                <WeatherForecast city={weatherData.cityName}/>
             </div>
         );
     } else {
         searchLocation();
         return (
-            <div className={"Weather " + getBackground()}>
+            <div className={"Weather " + getTime()}>
                 {searchForm}
                 <Loader
                     type="ThreeDots"
