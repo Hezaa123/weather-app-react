@@ -3,7 +3,7 @@
   margin: 0 auto;
   width: 480px;
   height: 570px;
-  max-width: 90%;
+  max-width: fit-content;
 }
 
 .App footer {
