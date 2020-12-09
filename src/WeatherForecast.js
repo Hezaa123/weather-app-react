@@ -14,6 +14,7 @@ export default function WeatherForecast (props){
     }
 
     if(loaded && props.city === forecastData.city.name){
+        console.log(props.country);
         return (
             <div className="WeatherForecast">
                 <span className="forecastTitle">

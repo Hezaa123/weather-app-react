@@ -12,6 +12,7 @@ export default function Weather(props) {
     const [city, setCity] = useState(props.defaultCity);
     const [countryCode, setCountryCode] = useState(props.defaultCountryCode);
 
+    // Search bar with button, followed by a geolocation button and additional info button
     const searchForm = (
         <form onSubmit={handleSubmit}>
             <div className="locationSearch input-group">
@@ -37,7 +38,8 @@ export default function Weather(props) {
             </button>
         </form>
     );
-
+    
+    // Function used to set the weather data when a search has been performed
     function setWeather(response) {
         setWeatherData({
             loaded: true,
@@ -55,6 +57,7 @@ export default function Weather(props) {
         })
     }
 
+    //Function used to call the API once the submit has been handled
     function searchLocation() {                                                                                           
         const apiKey = "3f5abe4ce673d5dda415df055d820a42";
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&appid=${apiKey}`;
@@ -110,7 +113,7 @@ export default function Weather(props) {
             <div className={"Weather " + getTime()}>
                 {searchForm}
                 <WeatherInfo data={weatherData}/>
-                <WeatherForecast city={weatherData.cityName}/>
+                <WeatherForecast city={weatherData.cityName} country={weatherData.countryCode}/>
             </div>
         );
     } else {
