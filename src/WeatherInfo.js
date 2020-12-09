@@ -42,7 +42,7 @@ export default function WeatherInfo(props){
                     Humidity: {props.data.humidity}%
                 </li>
                 <li className="windspeed">
-                    Windspeed: {Math.round(props.data.windspeed)}km/h
+                    Windspeed: {Math.round(props.data.windspeed * 3.6)}km/h
                 </li>
             </ul>
             <WeatherSunriseSunset sunriseDate={props.data.sunrise} sunsetDate={props.data.sunset}/>

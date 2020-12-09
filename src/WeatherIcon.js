@@ -32,6 +32,8 @@ export default function WeatherIcon(props){
         color = "#ffffff";
     }
 
+    console.log(hours);
+
     return(
         <ReactAnimatedWeather
             icon={codeMapping[props.code]}

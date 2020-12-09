@@ -1,7 +1,7 @@
 import React from "react";
 import WeatherIcon from "./WeatherIcon";
 import { useUnit } from "./UnitContext";
-import "./WeatherForecastHourly.css";
+import "./WeatherForecastInfo.css";
 
 export default function WeatherForecastInfo(props){
     const celsiusUnit = useUnit();
@@ -16,7 +16,7 @@ export default function WeatherForecastInfo(props){
     }
 
     return(
-        <div className="WeatherForecastHourly col">
+        <div className="WeatherForecastInfo col-2 nopadding">
             <div className="threeHourForecast">
                 {hours()}
                 <WeatherIcon code={props.data.weather[0].icon}/>

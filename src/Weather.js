@@ -4,14 +4,13 @@ import Loader from "react-loader-spinner";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faMapMarkerAlt, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import "./Weather.css";
 
 export default function Weather(props) {
     const [weatherData, setWeatherData] = useState({loaded: false})
     const [city, setCity] = useState(props.defaultCity);
     const [countryCode, setCountryCode] = useState(props.defaultCountryCode);
-    //const [celsius, setCelsius] = useState(true);
 
     const searchForm = (
         <form onSubmit={handleSubmit}>
@@ -26,10 +25,16 @@ export default function Weather(props) {
                 <button className="searchButton btn" type="submit">
                     <FontAwesomeIcon icon={faSearch} />
                 </button>
+                <span className="searchInfo">
+                    <FontAwesomeIcon icon={faInfoCircle} />
+                    <span className="infoDetails">
+                        Try searching for "City, 2-Letter Country Code" e.g. London, GB
+                    </span>
+                </span>
             </div>
-                <button className="geoLocationButton btn mt-2" onClick={handleGeolocation}>
-                    <FontAwesomeIcon icon={faMapMarkerAlt} />
-                </button>
+            <button className="geoLocationButton btn mt-2" onClick={handleGeolocation}>
+                <FontAwesomeIcon icon={faMapMarkerAlt} />
+            </button>
         </form>
     );
 
@@ -82,11 +87,9 @@ export default function Weather(props) {
         setCountryCode(locationArray[1]);
     }
 
-
     function getTime() {
         const date = new Date();
         const hours = date.getHours();
-
         let time = "sunrise";
 
         if(hours >= 8 && hours < 10) {
@@ -102,7 +105,6 @@ export default function Weather(props) {
         return time;
     }
     
-
     if(weatherData.loaded) {
         return (
             <div className={"Weather " + getTime()}>

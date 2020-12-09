@@ -1,7 +1,8 @@
-.App {
+.App .container {
   display: block;
   margin: 0 auto;
-  width: 580px;
+  width: 480px;
+  height: 570px;
 }
 
 .App footer {
