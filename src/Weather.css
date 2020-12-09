@@ -34,6 +34,7 @@
 
 .Weather .locationSearch {
   margin: 0 auto;
+  max-width: 80%;
   width: 400px;
   position: relative;
   left: 21px;
