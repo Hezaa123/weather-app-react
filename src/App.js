@@ -6,6 +6,7 @@ import "./App.css";
 
 export default function App() {
 
+  //UnitProvider wraps all the logic for handling & and updating the state, then pushes the different values out to the children
   return (
     <div className="App">
       <div className="container">

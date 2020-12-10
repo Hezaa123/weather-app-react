@@ -13,20 +13,18 @@ export default function WeatherForecast (props){
         setloaded(true);
     }
 
-    if(loaded && props.city === forecastData.city.name){
-        console.log(props.country);
+    //Forecast will only be displayed if loaded, and the city / country match that of the current weather details
+    //By accessing the forecast list, slicing the first 6 items, mapping it to go through each item individually, then each item is temporarily called forecastItem and therefore displayed
+    if(loaded && props.city === forecastData.city.name && props.country === forecastData.city.country){
         return (
             <div className="WeatherForecast">
                 <span className="forecastTitle">
                     3 Hourly
                 </span> 
                 <div className="threeHourlyForecast row no-gutters">
-                    <WeatherForecastInfo data={forecastData.list[0]}/>
-                    <WeatherForecastInfo data={forecastData.list[1]}/>
-                    <WeatherForecastInfo data={forecastData.list[2]}/>
-                    <WeatherForecastInfo data={forecastData.list[3]}/>
-                    <WeatherForecastInfo data={forecastData.list[4]}/>
-                    <WeatherForecastInfo data={forecastData.list[5]}/>
+                    {forecastData.list.slice(0,6).map(function(forecastItem){
+                        return <WeatherForecastInfo data={forecastItem}/>
+                    })}
                 </div>
             </div>
         );

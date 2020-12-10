@@ -17,7 +17,7 @@ export default function Weather(props) {
         <form onSubmit={handleSubmit}>
             <div className="locationSearch input-group">
                 <input
-                    className="searchBar form-control rounded pr-3"
+                    className="searchBar form-control rounded"
                     type="search"
                     placeholder="Search location.."
                     autoFocus={false}
@@ -69,6 +69,7 @@ export default function Weather(props) {
         searchLocation();
     }
     
+    //Function used to call the API once the coordinated of current location have been fetched
     function setCoordinates(position) {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
@@ -90,6 +91,7 @@ export default function Weather(props) {
         setCountryCode(locationArray[1]);
     }
 
+    //Function created to determine the time of day, so I can add a second className to the div with class Weather
     function getTime() {
         const date = new Date();
         const hours = date.getHours();
@@ -117,13 +119,16 @@ export default function Weather(props) {
             </div>
         );
     } else {
+        const color = getTime()==="night" ? "White" : "Black";
         searchLocation();
+
         return (
             <div className={"Weather " + getTime()}>
                 {searchForm}
+
                 <Loader
                     type="ThreeDots"
-                    color="Black"
+                    color={color}
                     height={50}
                     width={50}
                 />

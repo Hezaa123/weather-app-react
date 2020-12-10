@@ -1,7 +1,6 @@
 import React from "react";
 import WeatherIcon from "./WeatherIcon";
 import { useUnit } from "./UnitContext";
-import "./WeatherForecastInfo.css";
 
 export default function WeatherForecastInfo(props){
     const celsiusUnit = useUnit();

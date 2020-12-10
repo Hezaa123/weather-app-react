@@ -5,6 +5,7 @@
   display: block;
   margin: 30px 0 auto;
   padding: 15px;
+  text-align: center;
   width: 100%;
   height: 100%;
 }
@@ -17,18 +18,26 @@
 
 .Weather.morning {
   background-image: url("morning.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .Weather.day {
   background-image: url("day.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .Weather.dusk {
   background-image: url("dusk.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .Weather.night {
   background-image: url("night.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #ffffff;
 }
 
@@ -43,11 +52,12 @@
   background-color: rgba(0, 0, 0, 0.1);
   border: none;
   transition: all 200ms ease-in-out;
+  padding-right: 30px;
 }
 
 .Weather.night .searchBar {
   background-color: rgba(255, 255, 255, 0.1);
-  border: none;
+  color: #ffffff;
   transition: all 200ms ease-in-out;
 }
 
@@ -80,7 +90,6 @@
 
 .Weather.night .searchBar::placeholder {
   color: rgba(255, 255, 255, 0.5);
-  border: none;
 }
 
 .Weather .searchButton {
@@ -91,20 +100,14 @@
 
 .Weather.night .searchButton {
   color: #ffffff;
-  position: relative;
-  right: 40px;
 }
 
 .Weather .searchButton:hover {
   color: #000000;
-  position: relative;
-  right: 40px;
 }
 
 .Weather.night .searchButton:hover {
   color: #ffffff;
-  position: relative;
-  right: 40px;
 }
 
 .Weather .searchInfo {
@@ -116,7 +119,7 @@
 
 .Weather .searchInfo:hover .infoDetails {
   align-items: left;
-  background-color: white;
+  background-color: #ffffff;
   border-radius: 4px;
   display: block;
   padding: 5px;
@@ -125,10 +128,6 @@
 
 .Weather.night .searchInfo:hover .infoDetails {
   background-color: #000000;
-  border-radius: 4px;
-  display: block;
-  padding: 5px;
-  width: 100px;
 }
 
 .Weather .infoDetails {
@@ -151,12 +150,7 @@
 
 .Weather.night .geoLocationButton {
   background-color: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-radius: 50%;
   color: #ffffff;
-  display: block;
-  margin: 0 auto;
-  transition: all 200ms ease-in-out;
 }
 
 .Weather .geoLocationButton:hover {
@@ -219,9 +213,6 @@
 
 .Weather.night .activeUnit {
   color: #ffffff;
-  font-size: 25px;
-  font-weight: 700;
-  text-decoration: none;
 }
 
 .Weather .unitLink {
@@ -237,11 +228,7 @@
 .Weather.night .unitLink {
   border-radius: 4px;
   color: #ffffff;
-  font-size: 20px;
-  font-weight: 700;
   opacity: 0.5;
-  padding: 0px 8px 0px 8px;
-  transition: all 200ms ease-in-out;
 }
 
 .Weather .unitLink:hover {
@@ -254,8 +241,6 @@
 .Weather.night .unitLink:hover {
   background-color: rgba(255, 255, 255, 0.1);
   box-shadow: 3px 3px 5px rgba(255, 255, 255, 0.3);
-  opacity: 1;
-  text-decoration: none;
 }
 
 .Weather .description {
@@ -283,6 +268,14 @@
 }
 
 .Weather .windspeed {
+  margin-left: 10px;
+}
+
+.Weather .sunrise {
+  margin-right: 10px;
+}
+
+.Weather .sunset {
   margin-left: 10px;
 }
 

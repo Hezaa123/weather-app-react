@@ -1,5 +1,4 @@
 import React from "react";
-import "./WeatherSunriseSunset.css";
 
 export default function WeatherSunriseSunset(props){
 

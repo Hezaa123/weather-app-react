@@ -16,16 +16,8 @@
   text-align: center;
 }
 
-.WeatherForecast .threeHourlyForecast::-webkit-scrollbar {
-  display: none;
-}
-
 .Weather.night .WeatherForecast .threeHourlyForecast {
   border-top: 1px solid #ffffff;
-  font-size: 15px;
-  font-weight: 600;
-  padding-top: 5px;
-  text-align: center;
 }
 
 .WeatherForecast canvas {
