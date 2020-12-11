@@ -3,7 +3,6 @@
 }
 
 .WeatherForecast .forecastTitle {
-  text-align: left;
   font-size: 15px;
   font-weight: 600;
 }
@@ -12,7 +11,7 @@
   border-top: 1px solid #000000;
   font-size: 15px;
   font-weight: 600;
-  padding-top: 5px;
+  padding-top: 7px;
   text-align: center;
 }
 
@@ -23,6 +22,6 @@
 .WeatherForecast canvas {
   display: block;
   margin: 0 auto;
-  padding: 5px 0 5px 0;
+  padding: 6px 0 6px 0;
   width: 50px;
 }
