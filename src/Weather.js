@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import Loader from "react-loader-spinner";
+import MoonLoader from "react-spinners/MoonLoader";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -126,11 +126,8 @@ export default function Weather(props) {
             <div className={"Weather " + getTime()}>
                 {searchForm}
 
-                <Loader
-                    type="ThreeDots"
+                <MoonLoader
                     color={color}
-                    height={50}
-                    width={50}
                 />
             </div>
         );
