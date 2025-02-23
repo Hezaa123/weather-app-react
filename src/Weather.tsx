@@ -1,14 +1,33 @@
-import React, { useState } from "react";
-import Axios from "axios";
+import { useState } from "react";
+import Axios, { AxiosResponse } from "axios";
 import MoonLoader from "react-spinners/MoonLoader";
-import WeatherInfo from "./WeatherInfo";
-import WeatherForecast from "./WeatherForecast";
+import { WeatherInfo } from "./WeatherInfo";
+import { WeatherForecast } from "./WeatherForecast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faMapMarkerAlt, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import "./Weather.css";
 
-export default function Weather(props) {
-    const [weatherData, setWeatherData] = useState({loaded: false})
+interface WeatherProps {
+    defaultCity: string;
+    defaultCountryCode: string;
+}
+
+interface WeatherData {
+    cityName: string;
+    countryCode: string;
+    temperature: number;
+    description: string;
+    icon: string;
+    humidity: number;
+    windspeed: number;
+    feelsLike: number;
+    sunrise: Date;
+    sunset: Date;
+    lastUpdated: Date;
+}
+export const Weather = (props: WeatherProps) => {
+    const [loaded, setLoaded] = useState(false);
+    const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
     const [city, setCity] = useState(props.defaultCity);
     const [countryCode, setCountryCode] = useState(props.defaultCountryCode);
 
@@ -40,9 +59,8 @@ export default function Weather(props) {
     );
     
     // Function used to set the weather data when a search has been performed
-    function setWeather(response) {
+    function setWeather(response: AxiosResponse) {
         setWeatherData({
-            loaded: true,
             cityName: response.data.name,
             countryCode: response.data.sys.country,
             icon: response.data.weather[0].icon,
@@ -54,7 +72,9 @@ export default function Weather(props) {
             windspeed: response.data.wind.speed,
             sunrise: new Date(response.data.sys.sunrise * 1000),
             sunset: new Date(response.data.sys.sunset * 1000)
-        })
+        });
+
+        setLoaded(true);
     }
 
     //Function used to call the API once the submit has been handled
@@ -64,13 +84,13 @@ export default function Weather(props) {
         Axios.get(apiUrl).then(setWeather);
     }
 
-    function handleSubmit(event) {
+    function handleSubmit(event: { preventDefault: () => void; }) {
         event.preventDefault();
         searchLocation();
     }
     
     //Function used to call the API once the coordinated of current location have been fetched
-    function setCoordinates(position) {
+    function setCoordinates(position: { coords: { latitude: any; longitude: any; }; }) {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
@@ -83,7 +103,7 @@ export default function Weather(props) {
         navigator.geolocation.getCurrentPosition(setCoordinates);
     }
 
-    function updateLocation(event) {
+    function updateLocation(event: { target: { value: any; }; }) {
         const location = event.target.value;
         const locationArray = location.split(",");
 
@@ -110,12 +130,12 @@ export default function Weather(props) {
         return time;
     }
     
-    if(weatherData.loaded) {
+    if(loaded) {
         return (
             <div className={"Weather " + getTime()}>
                 {searchForm}
-                <WeatherInfo data={weatherData}/>
-                <WeatherForecast city={weatherData.cityName} country={weatherData.countryCode}/>
+                {weatherData && <WeatherInfo data={weatherData}/>}
+                {weatherData && <WeatherForecast city={weatherData.cityName} country={weatherData.countryCode}/>}
             </div>
         );
     } else {

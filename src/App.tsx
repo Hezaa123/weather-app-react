@@ -1,8 +1,7 @@
 import React from "react";
 import { UnitProvider } from "./UnitContext";
 import { AppContainer, Footer } from "./app.styles";
-import Weather from "./Weather";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Weather } from "./Weather";
 
 export default function App() {
 

@@ -11,31 +11,31 @@
 }
 
 .Weather.sunrise {
-  background-image: url("sunrise.png");
+  background-image: url("../public/images/sunrise.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .Weather.morning {
-  background-image: url("morning.png");
+  background-image: url("../public/images/morning.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .Weather.day {
-  background-image: url("day.png");
+  background-image: url("../public/images/day.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .Weather.dusk {
-  background-image: url("dusk.png");
+  background-image: url("../public/images/dusk.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .Weather.night {
-  background-image: url("night.png");
+  background-image: url("../public/images/night.png");
   background-repeat: no-repeat;
   background-size: cover;
   color: #ffffff;

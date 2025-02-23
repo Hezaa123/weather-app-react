@@ -1,8 +1,21 @@
-import React from "react";
-import WeatherIcon from "./WeatherIcon";
+import { WeatherIcon } from "./WeatherIcon";
 import { useUnit } from "./UnitContext";
 
-export default function WeatherForecastInfo(props) {
+interface WeatherForecastInfoProps {
+    data: {
+        dt: number;
+        main: {
+            temp: number;
+        };
+        weather: [
+            {
+                icon: string;
+            }
+        ];
+    };
+}
+
+export const WeatherForecastInfo = (props: WeatherForecastInfoProps) => {
     const celsiusUnit = useUnit();
     const setUnit = {
         temperature: celsiusUnit ? props.data.main.temp : ((props.data.main.temp * 9) / 5 + 32),
