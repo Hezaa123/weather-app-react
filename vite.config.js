@@ -7,4 +7,9 @@ export default defineConfig({
     { enforce: 'pre', ...mdx() },
     react({ include: /\.(mdx|js|jsx|ts|tsx)$/ }),
   ],
+  build: {
+    rollupOptions: {
+      external: ['fs', 'child_process'],
+    },
+  },
 })
