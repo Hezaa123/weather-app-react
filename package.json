@@ -6,6 +6,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mdx-js/rollup": "3.1.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^14.6.1",
@@ -15,9 +16,7 @@
     "ajv": "^8.17.1",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
-    "@mdx-js/rollup": "3.1.0",
     "polished": "^4.3.1",
-    "postcss": ">=8.4.31",
     "react": "^19.0.0",
     "react-animated-weather": "^4.0.1",
     "react-dom": "^19.0.0",
@@ -54,7 +53,7 @@
     ]
   },
   "engines": {
-    "node": "18.x",
+    "node": "22.x",
     "npm": "10.x"
   }
 }
