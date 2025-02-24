@@ -1,4 +1,5 @@
 import { useUnit, useUnitUpdate } from "./UnitContext";
+import { WeatherUnitLink } from "./weatherUnit.styles";
 
 export const WeatherUnit = () =>{
     const celsiusUnit = useUnit();
@@ -10,7 +11,7 @@ export const WeatherUnit = () =>{
                 <div className="units">
                     <span className="activeUnit">C</span>
                     <br/>
-                    <a className="unitLink" href="/" onClick={toggleUnit}>F</a>
+                    <WeatherUnitLink className="unitLink" href="/" onClick={toggleUnit}>F</WeatherUnitLink>
                 </div>
             </span>
         );
@@ -20,7 +21,7 @@ export const WeatherUnit = () =>{
                 <span className="units">
                     <span className="activeUnit">F</span>
                     <br/>
-                    <a className="unitLink" href="/" onClick={toggleUnit}>C</a>
+                    <WeatherUnitLink className="unitLink" href="/" onClick={toggleUnit}>C</WeatherUnitLink>
                 </span>
             </span>
         );
