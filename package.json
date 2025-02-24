@@ -2,11 +2,7 @@
   "name": "weather-app-react",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "start": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
+
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
@@ -29,6 +25,11 @@
     "styled-components": "^6.1.15",
     "vite": "^6.1.1",
     "vite-tsconfig-paths": "^5.1.4"
+  },
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
     "typescript": "^5.7.3"
