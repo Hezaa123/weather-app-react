@@ -11,31 +11,31 @@
 }
 
 .Weather.sunrise {
-  background-image: url("sunrise.png");
+  background-image: url("../public/images/sunrise.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .Weather.morning {
-  background-image: url("morning.png");
+  background-image: url("../public/images/morning.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .Weather.day {
-  background-image: url("day.png");
+  background-image: url("../public/images/day.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .Weather.dusk {
-  background-image: url("dusk.png");
+  background-image: url("../public/images/dusk.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .Weather.night {
-  background-image: url("night.png");
+  background-image: url("../public/images/night.png");
   background-repeat: no-repeat;
   background-size: cover;
   color: #ffffff;
@@ -215,27 +215,10 @@
   color: #ffffff;
 }
 
-.Weather .unitLink {
-  border-radius: 4px;
-  color: #000000;
-  font-size: 20px;
-  font-weight: 700;
-  opacity: 0.7;
-  padding: 0px 8px 0px 8px;
-  transition: all 200ms ease-in-out;
-}
-
 .Weather.night .unitLink {
   border-radius: 4px;
   color: #ffffff;
   opacity: 0.5;
-}
-
-.Weather .unitLink:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-  opacity: 1;
-  text-decoration: none;
 }
 
 .Weather.night .unitLink:hover {

@@ -1,12 +1,26 @@
-import React from "react";
-import FormattedDate from "./FormattedDate";
-import WeatherIcon from "./WeatherIcon";
-import WeatherUnit from "./WeatherUnit";
-import WeatherSunriseSunset from "./WeatherSunriseSunset";
+import { FormattedDate } from "./FormattedDate";
+import { WeatherIcon } from "./WeatherIcon";
+import { WeatherUnit } from "./WeatherUnit";
+import { WeatherSunriseSunset } from "./WeatherSunriseSunset";
 import { useUnit } from "./UnitContext";
 import "./WeatherInfo.css";
 
-export default function WeatherInfo(props){
+interface WeatherInfoProps{
+    data: {
+        cityName: string;
+        countryCode: string;
+        temperature: number;
+        description: string;
+        icon: string;
+        humidity: number;
+        windspeed: number;
+        feelsLike: number;
+        sunrise: Date;
+        sunset: Date;
+        lastUpdated: Date;
+    }
+}
+export const WeatherInfo = (props: WeatherInfoProps) => {
     const celsiusUnit = useUnit();
 
     const setUnit = {

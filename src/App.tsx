@@ -1,11 +1,8 @@
-import React from "react";
 import { UnitProvider } from "./UnitContext";
 import { AppContainer, Footer } from "./app.styles";
-import Weather from "./Weather";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Weather } from "./Weather";
 
-export default function App() {
-
+export const App = () => {
   //UnitProvider wraps all the logic for handling & and updating the state, then pushes the different values out to the children
   return (
     <AppContainer>

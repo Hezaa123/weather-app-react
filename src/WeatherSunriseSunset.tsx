@@ -1,6 +1,9 @@
-import React from "react";
+interface WeatherSunriseSunsetProps {
+    sunriseDate: Date;
+    sunsetDate: Date;
+}
 
-export default function WeatherSunriseSunset(props) {
+export const WeatherSunriseSunset = (props: WeatherSunriseSunsetProps) => {
 
     function sunrise() {
         let hours = props.sunriseDate.getHours() < 10 ? `0${props.sunriseDate.getHours()}` : props.sunriseDate.getHours();
